@@ -221,8 +221,7 @@ export default {
       return DateLanguages.translations[this.language]
     },
     currMonthName () {
-      const monthName = this.fullMonthName ? this.translation.months.original : this.translation.months.abbr
-      return DateUtils.getMonthNameAbbr(this.pageDate.getMonth(), monthName)
+      return DateUtils.getMonthNameAbbr(this.pageDate.getMonth(), this.translation.months.original)
     },
     currYear () {
       return this.pageDate.getFullYear()
@@ -498,7 +497,7 @@ export default {
      */
     getPageDecade () {
       let sD = Math.floor(this.pageDate.getFullYear() / 10) * 10
-      return sD + '\'s'
+      return `${sD} - ${sD + 9}`
     },
     changeMonth (incrementBy) {
       let date = this.pageDate

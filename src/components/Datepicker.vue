@@ -613,7 +613,15 @@ export default {
         disabled = true
       }
       if (typeof this.disabled.from !== 'undefined' && this.disabled.from && date > this.disabled.from) {
-        disabled = true
+        const compareWithoutTime = (date1, date2) => {
+          const d1 = new Date(date1).setHours(0, 0, 0, 0)
+          const d2 = new Date(date2).setHours(0, 0, 0, 0)
+
+          const result = d1 > d2
+          return result
+        }
+
+        disabled = compareWithoutTime(date, this.disabled.from)
       }
       if (typeof this.disabled.ranges !== 'undefined') {
         this.disabled.ranges.forEach((range) => {

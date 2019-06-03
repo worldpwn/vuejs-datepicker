@@ -609,7 +609,6 @@ export default {
           }
         })
       }
-
       if (typeof this.disabled.to !== 'undefined' && this.disabled.to && this.dateLessThan(date, this.disabled.to)) {
         disabled = true
       }

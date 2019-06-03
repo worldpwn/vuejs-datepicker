@@ -609,7 +609,7 @@ export default {
           }
         })
       }
-      if (typeof this.disabled.to !== 'undefined' && this.disabled.to && this.dateLessThan(date, this.disabled.to)) {
+      if (typeof this.disabled.to !== 'undefined' && this.disabled.to && this.isLess(date, this.disabled.to)) {
         disabled = true
       }
 
@@ -804,7 +804,7 @@ export default {
       this.selectedDate = date
       this.setPageDate(date)
     },
-    dateLessThan (date1, date2) {
+    isLess (date1, date2) {
       const d1 = new Date(date1).setHours(0, 0, 0, 0)
       const d2 = new Date(date2).setHours(0, 0, 0, 0)
 

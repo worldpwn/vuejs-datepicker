@@ -609,9 +609,10 @@ export default {
           }
         })
       }
-      if (typeof this.disabled.to !== 'undefined' && this.disabled.to && date < this.disabled.to) {
+      if (typeof this.disabled.to !== 'undefined' && this.disabled.to && this.isLess(date, this.disabled.to)) {
         disabled = true
       }
+
       if (typeof this.disabled.from !== 'undefined' && this.disabled.from && date > this.disabled.from) {
         disabled = true
       }
@@ -802,6 +803,12 @@ export default {
       }
       this.selectedDate = date
       this.setPageDate(date)
+    },
+    isLess (date1, date2) {
+      const d1 = new Date(date1).setHours(0, 0, 0, 0)
+      const d2 = new Date(date2).setHours(0, 0, 0, 0)
+
+      return d1 < d2
     },
     setPageDate (date) {
       if (!date) {

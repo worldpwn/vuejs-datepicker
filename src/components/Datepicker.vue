@@ -613,7 +613,7 @@ export default {
         disabled = true
       }
 
-      if (typeof this.disabled.from !== 'undefined' && this.disabled.from && date > this.disabled.from) {
+      if (typeof this.disabled.from !== 'undefined' && this.disabled.from && this.isGreater(date, this.disabled.from)) {
         disabled = true
       }
       if (typeof this.disabled.ranges !== 'undefined') {
@@ -636,6 +636,12 @@ export default {
         disabled = true
       }
       return disabled
+    },
+    isGreater (date1, date2) {
+      const d1 = new Date(date1).setHours(0, 0, 0, 0)
+      const d2 = new Date(date2).setHours(0, 0, 0, 0)
+
+      return d1 > d2
     },
     /**
      * Whether a day is highlighted (only if it is not disabled already)
